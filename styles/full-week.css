@@ -4,13 +4,13 @@ h1 {
     margin: 12px;
 }
 
-/* #description {
-    margin-bottom: 36px;
-} */
-
-header p {
+#description {
     margin-bottom: 36px;
 }
+
+/* header p {
+    margin-bottom: 36px;
+} */
 
 a {
     padding: 12px 48px;
@@ -48,4 +48,8 @@ h2 {
 main p {
     margin: 12px;
     color: rgb(71, 29, 22);
+}
+
+.highlight-goal {
+    background-color: rgb(226, 115, 101);
 }
