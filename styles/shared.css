@@ -13,6 +13,7 @@ p {
 }
 
 a {
+    font-family: 'Fira Sans', sans-serif;
     color: rgb(167,1,78);
     text-decoration: none;
 }
