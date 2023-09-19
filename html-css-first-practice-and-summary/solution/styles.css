@@ -10,4 +10,9 @@ h1 {
 
 header {
     text-align: center;
+    padding: 32px;
+}
+
+header img {
+    width: 300px;
 }
