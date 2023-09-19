@@ -51,6 +51,23 @@ a:active {
   background-color: rgb(250, 201, 49);
 }
 
+footer {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+footer p {
+  color: rgb(131, 113, 149);
+  margin-top: 30px;
+}
+
+footer a {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: rgb(250, 201, 39);
+  color: rgb(66, 51, 4);
+}
+
 .extra-important {
   color: rgb(255,237,177);
   border-left: 5px solid rgb(247, 209, 85);
