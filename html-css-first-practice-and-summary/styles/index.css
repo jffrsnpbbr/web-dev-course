@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f3e9ff;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -77,6 +77,6 @@ a {
 
 a:hover {
   border: 2px solid #ffefb7;
-  background-color: transparent;
+  background-color: #774ad8;
   color: #ffefb7;
 }
