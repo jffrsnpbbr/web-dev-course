@@ -16,3 +16,12 @@ header {
 header img {
     width: 300px;
 }
+
+main {
+    background-color: rgb(122, 74, 218);
+    padding: 32px;
+    margin: 32px auto;
+    width: 700px;
+    border-radius: 8px;
+    color: rgb(248, 241, 255);
+}
