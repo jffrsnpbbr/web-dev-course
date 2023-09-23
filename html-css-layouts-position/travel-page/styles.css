@@ -58,6 +58,5 @@
 
 .destination img {
     height: 200px;
-    /* width: 300px; */
-    object-fit: cover;
+    width: 100%;
 }
