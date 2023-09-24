@@ -1,5 +1,6 @@
 body {
   background: linear-gradient(30deg, rgb(77,77,77), rgb(55,55,55));
+  color: rgb(68, 68, 68);
 }
 
 header {
@@ -29,3 +30,27 @@ main li img {
 .item-content {
   padding: 24px;
 }
+
+.item-content {
+  color: #3e3c3e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.actions {
+  text-align: right;
+}
+
+.actions a {
+  text-decoration: none;
+  padding: 6px;
+  color: #15b0cd;
+  border-radius: 5px;
+}
+
+.actions a:hover {
+  background-color: rgb(235, 253, 255);
+}
+
+
