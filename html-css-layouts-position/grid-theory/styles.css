@@ -22,3 +22,8 @@ li {
   width: 200px;
   margin: 20px auto;
 }
+
+li:nth-of-type(3) {
+  background-color: yellow;
+  grid-column: 1 / span 2;
+}
