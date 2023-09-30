@@ -40,6 +40,7 @@
               type="text"
               name="user-name"
               id="username"
+              required
             />
           </li>
           <li>
@@ -48,6 +49,7 @@
               type="email"
               name="user-email"
               id="useremail"
+              required
             />
           </li>
           <li>
@@ -56,6 +58,8 @@
               type="password"
               name="user-password"
               id="userpassword"
+              required
+              minlength="7"
             />
           </li>
         </ul>
@@ -71,6 +75,9 @@
               step="0.5"
               name="user-age"
               id="userage"
+              required
+              min="18"
+              max="100"
             />
           </li>
           <li>
@@ -79,6 +86,8 @@
               type="date"
               name="user-birthdate"
               id="userbirthdate"
+              min="1923-01-01"
+              max="2005-01-01"
             />
           </li>
           <li>
@@ -86,6 +95,7 @@
             <select
               name="favorite-color"
               id="favoritecolor"
+              required
             >
               <option value="blue">Blue</option>
               <option value="black">Black</option>
@@ -100,6 +110,7 @@
         <textarea
           name="user-message"
           id="userimage"
+          required
         ></textarea>
       </section>
 
@@ -112,6 +123,7 @@
               name="verify"
               id="verify-text-message"
               value="text-message"
+              required
             />
             <label for="verify-text-message">Via text message (SMS)</label>
           </li>
@@ -121,6 +133,7 @@
               name="verify"
               id="verify-phone"
               value="phone"
+              required
             />
             <label for="verify-phone">Via a phone call</label>
           </li>
@@ -130,6 +143,7 @@
               name="verify"
               id="verify-email"
               value="email"
+              required
             />
             <label for="verify-email">Via an email</label>
           </li>
