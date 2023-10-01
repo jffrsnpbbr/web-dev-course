@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="contacts.css">
+  <title>Form Challenge </title>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <form>
+    <section>
+      <h2>How can we help you?</h2>
+      <ul>
+        <li>
+          <label for="name">Your name</label>
+          <input type="text" name="name" id="name" required>
+        </li>
+        <li>
+          <label for="email">Your E-Mail Address</label>
+          <input type="email" name="email" id="email" required>
+        </li>
+        <li>
+          <label for="email">Your Phone Number</label>
+          <input type="phone" name="email" id="email" required>
+        </li>
+        <li>
+          <label for="message">Your Message</label>
+          <textarea name="message" id="message" rows="8"></textarea>
+        </li>
+        <li>
+          <label for="how_did_you_find_us">How did you find us?</label>
+          <select name="how_did_you_find_us" id="how_did_you_find_us">
+            <option value="web">Web Search</option>
+            <option value="word_of_mouth">Word of Mouth</option>
+            <option value="other">Other</option>
+          </select>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How should we reply?</h2>
+      <ul>
+        <li class="form-control-inline">
+          <input type="radio" name="how_should_we_reply" id="how_should_we_reply">
+          <label for="call_me">Call me</label>
+        </li>
+        <li class="form-control-inline">
+          <input type="radio" name="how_should_we_reply" id="send_me_an_email">
+          <label for="send_me_an_email">Send me an email</label>
+        </li>
+        <li class="form-control-inline">
+          <input type="radio" name="how_should_we_reply" id="dont_reply">
+          <label for="dont_reply">Don't Reply</label>
+        </li>
+      </ul>
+    </section>
+    <section class="form-control-terms">
+      <div class="form-control-inline">
+        <input type="checkbox" name="accept_terms" id="accept_terms">
+        <label for="accept_terms">Agree to terms</label>
+      </div>
+    </section>
+    <section class="form-actions">
+      <button type="reset">Clear</button>
+      <button type="submit">Submit</button>
+    </section>
+
+  </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body {
+  background-color: #ecf9fe;
+  color: #363858;
+}
+
+h1 {
+  color: #363858;
+}
+
+form {
+  background-color: #f5f8ff;
+  border: 2px solid #363858;
+  color: #363858;
+  margin-top: 1rem;
+}
+
+.form-control-terms {
+  margin-top: .5rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: end;
+}
+
+button {
+  border: 1px solid #363858;
+  display: inline-block;
+}
+
+button[type="reset"] {
+  background-color: #f5f8ff;
+  color: #363858;
+  margin-right: 0.5rem;
+  
+}
+
+button[type="submit"] {
+  background-color: #363858;
+}
