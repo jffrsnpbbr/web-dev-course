@@ -17,7 +17,7 @@
       <h1>Contact Us</h1>
     </header>
     <main>
-      <form>
+      <form action="/solutions/index.html" method="GET">
         <section>
           <h2>How can we help you?</h2>
           <ul>
@@ -27,6 +27,7 @@
                 type="text"
                 name="username"
                 id="username"
+                required
               />
             </li>
             <li>
@@ -35,6 +36,7 @@
                 type="email"
                 name="email"
                 id="email"
+                required
               />
             </li>
             <li>
@@ -43,6 +45,8 @@
                 type="tel"
                 name="phone"
                 id="phone"
+                minlength="5"
+                required
               />
             </li>
             <li>
@@ -50,6 +54,9 @@
               <textarea
                 name="message"
                 id="message"
+                minlength="10"
+                maxlength="200"
+                required
               ></textarea>
             </li>
           </ul>
@@ -59,6 +66,7 @@
           <select
             name="channel"
             id="channel"
+            required
           >
             <option value="search">Web Search</option>
             <option value="word-of-mouth">Word of Mouth</option>
@@ -74,6 +82,7 @@
                 name="reply"
                 id="reply-phone"
                 value="phone"
+                required
               />
               <label for="reply-phone">Call me</label>
             </li>
@@ -83,6 +92,7 @@
                 name="reply"
                 id="reply-email"
                 value="email"
+                required
               />
               <label for="reply-email">Send me an email</label>
             </li>
@@ -92,13 +102,14 @@
                 name="reply"
                 id="reply-none"
                 value="none"
+                required
               />
               <label for="reply-none">Don't reply</label>
             </li>
           </ul>
         </section>
         <section>
-          <input type="checkbox" name="accept-terms" id="accept-terms">
+          <input type="checkbox" name="accept-terms" id="accept-terms" required>
           <label for="accept-terms">Accept Terms</label>
         </section>
         <section>
