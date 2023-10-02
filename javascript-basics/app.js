@@ -8,3 +8,4 @@ let job = {
 };
 
 alert(hobbies[0]);
+alert(job.title);
