@@ -28,3 +28,7 @@ console.log(result);
 
 console.log('Max' + ' ' + 'Schwarzmuller');
 console.log('Max' - 'ax');
+
+let userName = 'Max';
+console.log(userName.length);
+console.log(userName.toUpperCase());
