@@ -28,9 +28,9 @@ let courseGoals = [
     'Have fun!'
 ];
 
-alert(courseName);
-alert(coursePrice);
-alert(courseGoals);
+console.log(courseName);
+console.log(coursePrice);
+console.log(courseGoals);
 
 let onlineCourse = {
     name: 'Web Development Bootcamp',
@@ -42,7 +42,7 @@ let onlineCourse = {
     ]
 };
 
-alert(onlineCourse.goals[1]);
+console.log(onlineCourse.goals[1]);
 
 function getListItem(array, arrayIndex) {
     let arrayElement = array[arrayIndex];
@@ -50,4 +50,4 @@ function getListItem(array, arrayIndex) {
 }
 
 let firstGoal = getListItem(onlineCourse.goals, 0);
-alert(firstGoal);
+console.log(firstGoal);
