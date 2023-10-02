@@ -7,18 +7,16 @@ let job = {
   salary: 50000,
 };
 
-
-let adultYears;
+let totalAdultYears;
 
 function calculateAdultYears() {
-    adultYears =  age - 18
+  return age - 18;
 }
 
-
-calculateAdultYears();
-alert(adultYears);
+totlaAdultYears = calculateAdultYears();
+alert(totalAdultYears);
 
 age = 45;
-calculateAdultYears();
+calculateAdultYears =calculateAdultYears();
 
-alert(adultYears);
+alert(totalAdultYears);
