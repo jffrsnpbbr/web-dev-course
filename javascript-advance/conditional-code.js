@@ -1,7 +1,6 @@
 const myName = 'Max';
 
 
-if () {
+if (true) {
   console.log('Hello!');
-
 }
