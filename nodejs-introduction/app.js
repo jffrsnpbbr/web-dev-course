@@ -1,3 +1,4 @@
-const userName = 'Maximillian';
+const http = require('http');
+const server = http.createServer();
 
-console.log(userName);
+server.listen(3000);
