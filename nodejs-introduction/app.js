@@ -1,6 +1,7 @@
-const { json } = require('body-parser');
+const fs = require('fs');
+const path = require('path');
+
 const express = require('express');
-const { resolve } = require('path/win32');
 
 const app = express();
 
@@ -18,7 +19,15 @@ app.get('/', function(req, res) {
 
 app.post('/store-user', function(req, res) {
   const username = req.body.username;
-  console.log(username);
+
+  const filePath = path.join(__dirname, 'data', 'users.json');
+  
+  const fileData = fs.readFileSync(filePath);
+  const existingUsers = JSON.parse(fileData);
+  
+  existingUsers.push(username);;
+
+  fs.writeFileSync(filePath, JSON.stringify(existingUsers));
 
   res.send(
     '<h1>Username stored!</h1>'
