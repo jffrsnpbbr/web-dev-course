@@ -1,18 +1,17 @@
-const http = require('http');
+const express = require('express');
+const { resolve } = require('path/win32');
 
-function handleRequest(request, response) {
-  if (request.url === '/currenttime') {
-    response.statusCode = 200;
-    response.end('<h1>' + new Date().toISOString() + '</h1>');
-  } else if (request.url === '/') {
-    response.statusCode = 200;
-    response.end('<h1>Hello World!</h1>');
-  }
+const app = express();
 
-  response.statusCode = 404;
-  response.end('<h1>Page not found!</h1>');
-}
+app.get('/currenttime', function(req, res) {
+  res.send('<h1>' + new Date().toISOString() + '</h1>');
+}); // localhost:3000/currenttime
 
-const server = http.createServer(handleRequest);
+app.get('/', function(req, res) {
+  res.send(
+    '<h1>Hello World!</h1>' + 
+    '<a href="currenttime">Current Time</a>'
+  );
+}); // localhost:3000
 
-server.listen(3000);
+app.listen(3000);
