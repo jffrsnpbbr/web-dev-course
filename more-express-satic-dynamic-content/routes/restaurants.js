@@ -6,14 +6,39 @@ const resData = require('../utils/resturant-data');
 const router = express.Router();
 
 router.get('/restaurants', function (req, res) {
-  const storedRestaurants = resData.getStoredRestaurants();
+  let order = req.query.order;
+  let nextOrder = 'desc';
+
   
-  res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants });
+  const storedRestaurants = resData.getStoredRestaurants();
+
+  if (order !== 'asc' && order !== 'desc') {
+    order = 'asc';
+  }
+
+  if (order === 'desc') {
+    nextOrder = 'asc';
+  } else {
+    nextOrder = 'desc';
+  }
+
+  storedRestaurants.sort(function (resA,resB) {
+    if ((order === 'asc' && resA.name > resB.name) || (order === 'desc' && resB.name > resA.name)) {
+      return 1;
+    }
+    return -1;
+  });
+
+  res.render('restaurants', {
+    numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants,
+    nextOrder: nextOrder
+  });
 });
 
-router.get('/restaurants/:id', function(req, res) {
+router.get('/restaurants/:id', function (req, res) {
   const restaurantId = req.params.id;
-  const storedRestaurants = resData.getStoredRestaurants()
+  const storedRestaurants = resData.getStoredRestaurants();
 
   for (const restaurant of storedRestaurants) {
     if (restaurant.id === restaurantId) {
@@ -36,7 +61,7 @@ router.post('/recommend', function (req, res) {
   const restaurants = resData.getStoredRestaurants();
 
   restaurants.push(restaurant);
-  
+
   resData.storeRestaurants(restaurants);
 
   res.redirect('/confirm');
