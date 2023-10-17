@@ -12,5 +12,12 @@
     "cuisine": "Test2",
     "website": "https://test2.com",
     "description": "Test2"
+  },
+  {
+    "name": "Jolibee",
+    "address": "Bida ang saya ave",
+    "cuisine": "FilChi",
+    "website": "https://jabee.com",
+    "description": "Yes Sir!"
   }
 ]
