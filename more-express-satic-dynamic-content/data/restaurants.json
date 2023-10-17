@@ -1,5 +1,6 @@
 [
   {
+    "id": "c858fd44-ceaa-4891-9fca-7d2b0594827d",
     "name": "Test",
     "address": "Test",
     "cuisine": "Test",
@@ -7,6 +8,7 @@
     "description": "Test"
   },
   {
+    "id": "0115e05e-32fd-42cf-931e-38db46ef4d80",
     "name": "Test 2",
     "address": "Test 2",
     "cuisine": "Test2",
@@ -14,6 +16,7 @@
     "description": "Test2"
   },
   {
+    "id": "83b92d0f-b090-4b7b-b428-857cb6b29c28",
     "name": "Jolibee",
     "address": "Bida ang saya ave",
     "cuisine": "FilChi",
