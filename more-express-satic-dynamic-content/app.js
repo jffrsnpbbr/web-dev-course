@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 
 const express = require('express');
 
@@ -35,7 +36,9 @@ app.get('/recommend', function (req, res) {
 
 app.post('/recommend', function (req, res) {
   const restaurant = req.body;
-  const filePath = path.join(__dirname, 'data', 'restaurants.json');
+  restaurant.id = crypto.randomUUID();
+
+  const filePath = path.join(__dirname, 'data', 'restaurants.json'); 
 
   const fileData = fs.readFileSync(filePath);
   const storedRestaurants = JSON.parse(fileData);
