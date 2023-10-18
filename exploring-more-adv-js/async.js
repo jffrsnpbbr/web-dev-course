@@ -16,6 +16,9 @@ function readFile() {
       // return anotherAsyncOperation;
     })
     .then(function() {
+    })
+    .catch(function(error){
+      console.log(error.message);
     });
 
   console.log('Hi there!');
