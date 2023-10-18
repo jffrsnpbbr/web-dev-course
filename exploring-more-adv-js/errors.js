@@ -5,10 +5,16 @@ function readFile() {
   try {
     const fileData = fs.readFileSync('data.json');
     console.log('trying...')
-  } catch {
-    console.log('An error occured!');
+    
+  } catch (error) {
+    console.log(error.message);
   }
   console.log('Hi there!');
 }
 
 readFile();
+
+// function doSomething() {
+//   // do something ...
+//   throw { message: 'Something went wrong! };
+// }
