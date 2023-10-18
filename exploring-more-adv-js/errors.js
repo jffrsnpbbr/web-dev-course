@@ -1,20 +1,21 @@
 const fs = require('fs');
-const path = require('path');
 
 function readFile() {
+  let fileDdata;
   try {
-    const fileData = fs.readFileSync('data.json');
+    // const fileData = fs.readFileSync('data.json');
+    fileData = fs.readFileSync('data.json');
     console.log('trying...')
     
   } catch (error) {
     console.log(error.message);
   }
+  console.log(fileDdata);
   console.log('Hi there!');
 }
 
 readFile();
 
-// function doSomething() {
-//   // do something ...
-//   throw { message: 'Something went wrong! };
-// }
+module.exports = {
+  readFile
+}
