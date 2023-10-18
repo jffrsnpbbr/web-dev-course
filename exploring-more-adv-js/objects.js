@@ -27,3 +27,11 @@ const cook = new Job('Cook', 'Manila', 35000);
 
 developer.describe();
 cook.describe();
+
+// destructuring Objects & Arrays
+const { title: role, location, salary } = developer;
+console.log(role, location, salary);
+
+const input = ['Jeff', 'Pababero'];
+const [ firstname, lastname ] = input;
+console.log(firstname, lastname);
