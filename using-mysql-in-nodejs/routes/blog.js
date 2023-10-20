@@ -1,6 +1,7 @@
 const express = require('express');
 
 const db = require('../data/database');
+const { redirect } = require('express/lib/response');
 
 const router = express.Router();
 
@@ -73,8 +74,24 @@ router.get('/posts/:id/edit', async function (req, res) {
     return res.status(404).render('404');
   }
 
-
   res.render('update-post', { post: posts[0] })
 });
+
+router.post('/posts/:id/edit', async function (req, res) {
+
+  const queryString = `
+    UPDATE posts
+    SET title = ?, summary = ?, body = ?
+    WHERE id = ?
+  `
+  await db.query(queryString, [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.params.id
+  ]);
+
+  res.redirect('/posts');
+})
 
 module.exports = router;
