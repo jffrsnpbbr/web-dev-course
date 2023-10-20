@@ -10,7 +10,11 @@
   <%- include('includes/header') %>
   <main id="all-posts">
     <h1>All Posts</h1>
-   
+    <ul>
+      <% for (const post of posts) { %>
+        <li><%= post.title %></li>
+      <% } %>
+    </ul>
   </main> 
 </body>
 

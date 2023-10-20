@@ -8,8 +8,9 @@ router.get('/', function (req, res) {
   res.redirect('/posts');
 });
 
-router.get('/posts', function (req, res) {
-  res.render('posts-list');
+router.get('/posts', async function (req, res) {
+  const [posts] = await db.query('SELECT * FROM posts');
+  res.render('posts-list', { posts });
 });
 
 router.get('/new-post', async function (req, res) {
@@ -17,9 +18,15 @@ router.get('/new-post', async function (req, res) {
   res.render('create-post', { authors });
 });
 
-router.post('/new-post', function (req, res) {
-  const author = req.body;
-  console.log(author);
+router.post('/new-post', async function (req, res) {
+  const author = [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.body.author
+  ]
+  await db.query('INSERT INTO posts (`title`, `summary`, `body`, `author_id`) VALUES (?)', [ author ]);
+  res.redirect('/posts');
 });
 
 module.exports = router;
