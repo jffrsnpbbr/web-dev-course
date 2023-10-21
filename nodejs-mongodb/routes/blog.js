@@ -58,13 +58,25 @@ router.get('/posts/:id', async function (req, res) {
   const post = await db
     .getDatabase()
     .collection('posts')
-    .findOne({ _id: new ObjectId(postId) }, { title: 1, 'author.name': 1, body: 1, date: 1});
-    console.log(post);
+    .findOne(
+      { _id: new ObjectId(postId) },
+      { title: 1, 'author.name': 1, body: 1, date: 1 }
+    );
+  console.log(post);
 
   if (!post) {
     return res.status(404).render(404);
   }
-  
+
+  post.humanReadableDate = post.date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  post.date = post.date.toISOString();
+
   res.render('post-detail', { post });
 });
 
