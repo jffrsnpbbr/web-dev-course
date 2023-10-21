@@ -72,12 +72,44 @@ router.get('/posts/:id', async function (req, res) {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 
   post.date = post.date.toISOString();
 
   res.render('post-detail', { post });
+});
+
+router.get('/posts/:id/edit', async function (req, res) {
+  console.log('posts/edit');
+  const postId = req.params.id;
+  const post = await db
+    .getDatabase()
+    .collection('posts')
+    .findOne({ _id: new ObjectId(postId) }, { title: 1, summary: 1, body: 1 });
+
+  if (!post) {
+    res.status(404).render('404');
+  }
+
+  res.render('update-post', { post });
+});
+
+router.post('/posts/:id/edit', async function (req, res) {
+  const postId = new ObjectId(req.params.id);
+  const result = await db.getDatabase()
+    .collection('posts')
+    .updateOne(
+      { _id: postId },
+      {
+        $set: {
+          title: req.body.title,
+          summary: req.body.summary,
+          body: req.body.content,
+        },
+      }
+    );
+  res.redirect('/posts');
 });
 
 module.exports = router;
