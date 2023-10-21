@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../data/database');
 
 const router = express.Router();
 
@@ -11,7 +12,9 @@ router.get('/posts', function(req, res) {
 });
 
 router.get('/new-post', async function(req, res) {
-  res.render('create-post');
+  const authors = await db.getDatabase().collection('authors').find({}).toArray();
+  console.log(authors);
+  res.render('create-post', { authors });
 });
 
 module.exports = router;
