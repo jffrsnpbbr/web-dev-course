@@ -58,10 +58,7 @@ router.get('/posts/:id', async function (req, res) {
   const post = await db
     .getDatabase()
     .collection('posts')
-    .findOne(
-      { _id: new ObjectId(postId) },
-      { summary: 0 }
-    );
+    .findOne({ _id: new ObjectId(postId) }, { summary: 0 });
   console.log(post);
 
   if (!post) {
@@ -97,7 +94,8 @@ router.get('/posts/:id/edit', async function (req, res) {
 
 router.post('/posts/:id/edit', async function (req, res) {
   const postId = new ObjectId(req.params.id);
-  const result = await db.getDatabase()
+  const result = await db
+    .getDatabase()
     .collection('posts')
     .updateOne(
       { _id: postId },
@@ -109,6 +107,17 @@ router.post('/posts/:id/edit', async function (req, res) {
         },
       }
     );
+  res.redirect('/posts');
+});
+
+router.post('/posts/:id/delete', async function (req, res) {
+  const postId = new ObjectId(req.params.id);
+  const result = await db
+    .getDatabase()
+    .collection('posts')
+    .deleteOne({ _id: postId });
+  console.log(result);
+
   res.redirect('/posts');
 });
 
