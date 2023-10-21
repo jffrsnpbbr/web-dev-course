@@ -53,12 +53,20 @@ router.post('/posts', async function (req, res) {
   res.redirect('/posts');
 });
 
-router.get('/posts/:id', async function (req, res) {
-  const postId = req.params.id;
+router.get('/posts/:id', async function (req, res, next) {
+  let postId = '';
+
+  try {
+    postId = new ObjectId(req.params.id);
+  } catch (error) {
+    return res.status(404).render(404);
+    // return next(error);
+  }
+  
   const post = await db
     .getDatabase()
     .collection('posts')
-    .findOne({ _id: new ObjectId(postId) }, { summary: 0 });
+    .findOne({ _id: postId}, { summary: 0 });
   console.log(post);
 
   if (!post) {
