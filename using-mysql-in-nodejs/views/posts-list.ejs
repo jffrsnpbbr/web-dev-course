@@ -21,9 +21,11 @@
             <p class="post-item-author">By <%= post.author_name %></p>
             <p><%= post.summary %></p>
             <div class="post-actions">
+              <form action="/posts/<%= post.id %>/delete" method="post">
                 <button class="btn btn-alt">Delete Post</button>
-                <a href="/posts/<%= post.id %>/edit">Edit Post</a>
-                <a href="/posts/<%= post.id %>" class="btn">View Post</a>
+              </form>
+              <a href="/posts/<%= post.id %>/edit">Edit Post</a>
+              <a href="/posts/<%= post.id %>" class="btn">View Post</a>
             </div>
           </li>
         <% } %>
