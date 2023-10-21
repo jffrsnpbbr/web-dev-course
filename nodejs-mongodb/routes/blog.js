@@ -60,7 +60,7 @@ router.get('/posts/:id', async function (req, res) {
     .collection('posts')
     .findOne(
       { _id: new ObjectId(postId) },
-      { title: 1, 'author.name': 1, body: 1, date: 1 }
+      { summary: 0 }
     );
   console.log(post);
 
