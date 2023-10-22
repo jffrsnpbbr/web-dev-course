@@ -23,13 +23,15 @@ router.get('/new-user', function (req, res) {
   res.render('new-user');
 });
 
-router.post('/profiles', upload.single('image'), function (req, res) {
+router.post('/profiles', upload.single('image'), async  function (req, res) {
   const uploadedImageFile = req.file;
   const userData = req.body;
+ 
+  await db.getDb().collection('users').insertOne({
+    name: userData.username,
+    imagePath: uploadedImageFile.path
+  });
 
-  console.log(uploadedImageFile);
-  console.log(userData);
-  
   res.redirect('/');
 });
 
