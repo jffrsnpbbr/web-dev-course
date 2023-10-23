@@ -32,9 +32,20 @@ async function fetchCommentsForPost() {
 
 async function saveComment(event) {
   event.preventDefault();
-  
+
+  const postId = event.target.dataset.postid;
   const enteredTitle = commentTitleElement.value;
   const enteredText = commentTextElement.value;
+
+  const comment = { title: enteredTitle, text: enteredText }
+
+  const response = await fetch(`/posts/${postId}/comments`, {
+    method: 'POST',
+    body: JSON.stringify(comment),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
 }
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
