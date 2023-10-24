@@ -88,6 +88,7 @@ router.post('/login', async function (req, res) {
 });
 
 router.get('/admin', function (req, res) {
+  // Check user "ticket"
   res.render('admin');
 });
 
