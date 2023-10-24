@@ -1,4 +1,5 @@
 const express = require('express');
+const bycrpt = require('bcryptjs');
 
 const db = require('../data/database');
 
@@ -12,27 +13,27 @@ router.get('/signup', function (req, res) {
   res.render('signup');
 });
 
+router.get('/login', function (req, res) {
+  res.render('login');
+});
+
 router.post('/signup', async function (req, res) {
   const userData = req.body;
   const enteredEmail = userData.email;
   const enteredConfirmEmail = userData['confirm-email'];
   const enteredPassword = userData['password'];
 
+  const hashedPassword = await bycrpt.hash(enteredPassword, 12);
+
   const user = {
     email: enteredEmail,
-    password: enteredPassword,
+    password: hashedPassword,
   };
 
   await db.getDb().collection('users').insertOne(user);
 
   res.redirect('/login');
 });
-
-router.get('/login', function (req, res) {
-  res.render('login');
-});
-
-router.post('/signup', async function (req, res) {});
 
 router.post('/login', async function (req, res) {});
 
