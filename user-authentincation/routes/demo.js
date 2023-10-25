@@ -2,6 +2,7 @@ const express = require('express');
 const bycrpt = require('bcryptjs');
 
 const db = require('../data/database');
+const session = require('express-session');
 
 const router = express.Router();
 
@@ -41,7 +42,7 @@ router.post('/signup', async function (req, res) {
 
   if (existingUser) {
     console.log('User exist already!');
-    return res.redirect('/signup')
+    return res.redirect('/signup');
   }
 
   const hashedPassword = await bycrpt.hash(enteredPassword, 12);
@@ -83,8 +84,16 @@ router.post('/login', async function (req, res) {
     res.redirect('/login');
   }
 
-  console.log('User is authenticated!');
-  res.redirect('/admin');
+  req.session.user = {
+    id: existingUser._id,
+    email: existingUser.email,
+  };
+
+  req.session.isAuthenticated = true;
+  req.session.save(function () {
+    console.log('User is authenticated!');
+    res.redirect('/admin');
+  });
 });
 
 router.get('/admin', function (req, res) {
