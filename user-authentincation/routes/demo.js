@@ -97,7 +97,9 @@ router.post('/login', async function (req, res) {
 });
 
 router.get('/admin', function (req, res) {
-  // Check user "ticket"
+  if (!req.session.isAuthenticated) {
+    return res.status(401).render('401');
+  }
   res.render('admin');
 });
 

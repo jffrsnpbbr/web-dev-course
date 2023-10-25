@@ -28,7 +28,7 @@ app.use(
     secret: 'super-secret',
     resave: false,
     saveUninitialized: false,
-    store: sessionStore,
+    store: sessionStore
   })
 );
 
