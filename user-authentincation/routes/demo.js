@@ -11,6 +11,10 @@ router.get('/', function (req, res) {
 });
 
 router.get('/signup', function (req, res) {
+  if (req.session.isAuthenticated) {
+    return res.redirect('/');
+  }
+
   let sessionInputData = req.session.inputData;
   if (!sessionInputData) {
     sessionInputData = {
@@ -27,6 +31,10 @@ router.get('/signup', function (req, res) {
 });
 
 router.get('/login', function (req, res) {
+  if (req.session.isAuthenticated) {
+    return res.redirect('/');
+  }
+
   let sessionInputData = req.session.inputData;
 
   if (!sessionInputData) {
