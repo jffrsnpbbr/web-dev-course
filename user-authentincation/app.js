@@ -35,10 +35,7 @@ app.use(async function (req, res, next) {
   const user = req.session.user;
   const isAuth = req.session.isAuthenticated;
 
-  console.log(user, isAuth);
-
   if (!user || !isAuth) {
-    console.log('is not loggedin');
     return next();
   }
 
