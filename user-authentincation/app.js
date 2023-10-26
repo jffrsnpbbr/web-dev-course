@@ -27,9 +27,32 @@ app.use(
     secret: 'super-secret',
     resave: false,
     saveUninitialized: false,
-    store: sessionStore
+    store: sessionStore,
   })
 );
+
+app.use(async function (req, res, next) {
+  const user = req.session.user;
+  const isAuth = req.session.isAuthenticated;
+
+  console.log(user, isAuth);
+
+  if (!user || !isAuth) {
+    console.log('is not loggedin');
+    return next();
+  }
+
+  const userDoc = await db
+    .getDb()
+    .collection('users')
+    .findOne({ _id: user.id });
+  const isAdmin = userDoc.isAdmin;
+
+  res.locals.isAuth = isAuth;
+  res.locals.isAdmin = isAdmin;
+
+  next();
+});
 
 app.use(demoRoutes);
 
