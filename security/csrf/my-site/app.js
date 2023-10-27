@@ -3,9 +3,11 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const mongodbStore = require('connect-mongodb-session');
+const csrf = require('csrf');
 
 const db = require('./data/database');
 const demoRoutes = require('./routes/demo');
+const csurf = require('csurf');
 
 const MongoDBStore = mongodbStore(session);
 
@@ -33,6 +35,8 @@ app.use(session({
     sameSite: 'lax'
   }
 }));
+
+app.use(csurf());
 
 app.use(async function(req, res, next) {
   const user = req.session.user;
