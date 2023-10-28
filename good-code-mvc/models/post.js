@@ -4,6 +4,18 @@ const db = require('../data/database');
 const ObjectId = mongodb.ObjectId;
 
 class Post {
+  static async fetchAll() {
+    return await db.getDb().collection('posts').find().toArray();
+  }
+
+  static async fetch(id) {
+    const { title, content, _id } = await db
+      .getDb()
+      .collection('posts')
+      .findOne({ _id: new ObjectId(id) });
+    return new this(title, content, _id);
+  }
+
   constructor(title, content, id) {
     this.title = title;
     this.content = content;
@@ -11,6 +23,16 @@ class Post {
     if (id) {
       this.id = new ObjectId(id);
     }
+  }
+
+  async fetch() {
+    const { title, content, _id: id } = await db
+      .getDb()
+      .collection('posts')
+      .findOne({ _id: this.id });
+    this.id = id;
+    this.title = title;
+    this.content = content;
   }
 
   async save() {
@@ -39,7 +61,10 @@ class Post {
       return;
     }
 
-    const result = await db.getDb().collection('posts').deleteOne({ _id: this.id });
+    const result = await db
+      .getDb()
+      .collection('posts')
+      .deleteOne({ _id: this.id });
     return result;
   }
 }
