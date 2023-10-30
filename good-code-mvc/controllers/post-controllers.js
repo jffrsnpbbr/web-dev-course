@@ -50,14 +50,21 @@ async function createPost(req, res) {
   res.redirect('/admin');
 }
 
-async function getSinglePost(req, res) {
+async function getSinglePost(req, res, next) {
   // const post = await Post.fetch(req.params.id);
 
   // if (!post) {
   //   return res.render('404'); // 404.ejs is missing at this point - it will be added later!
   // }
+  let post;
 
-  const post = new Post(null, null, req.params.id);
+  try {
+    post = new Post(null, null, req.params.id);
+  } catch (error) {
+    console.error(error)
+    return res.render('404');
+  }
+
   await post.fetch();
 
   if (!post.title || !post.content) {
